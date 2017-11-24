@@ -1,0 +1,40 @@
+{
+  "name": "shoot",
+  "version": "1.0.0",
+  "description": "build a website rapidly",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akaxiaok/shoot.git"
+  },
+  "author": "paradox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akaxiaok/shoot/issues"
+  },
+  "homepage": "https://github.com/akaxiaok/shoot#readme",
+  "dependencies": {
+    "element-react": "^1.4.3",
+    "element-theme-default": "^1.4.10",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  }
+}
