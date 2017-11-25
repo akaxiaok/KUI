@@ -60,6 +60,4 @@ typings/
 build/
 
 .idea/
-/react-cnode/
-react-cnode/
 dist/
