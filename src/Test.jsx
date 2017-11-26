@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import beautyGif from './image/beauty.gif';
+import './style/index.less';
 
 class Test extends Component {
   componentDidMount() {
