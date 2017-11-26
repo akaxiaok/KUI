@@ -3,10 +3,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
-  devtool: 'source-map', // 生成 source-map 有多种类型
+  devtool: 'inline-source-map',
   entry: {
-    index: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', path.resolve(__dirname, 'src/index.jsx')],
-    Test: path.resolve(__dirname, 'src/Test.jsx')
+    //index: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', path.resolve(__dirname, 'src/index.jsx')], // 使用 webpack-hot-middleware 需要添加入口参数
+    index: path.resolve(__dirname, 'src/index.jsx'),
+    // Test: path.resolve(__dirname, 'src/Test.jsx')
   },//已多次提及的唯一入口文件 __dirname”是node.js中的一个全局变量，它指向当前执行脚本所在的目录
   output: {
     path: path.resolve(__dirname, 'dist'),//打包后的文件存放的地方 // path.resolve 生成绝对路径
@@ -18,14 +19,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Output'
     }), // 生成 html 文件
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(), // 热替换 用于自定义的 server
   ],
   // 改用 express & webpack-dev-middleware
   devServer: {
     contentBase: './dist', // webpackServer 使用的路径
-    historyApiFallback: true, //不跳转
-    inline: true, //实时刷新
-    open: false // 是否自动打开浏览器
+    historyApiFallback: true, // 不跳转
+    inline: false, // 实时刷新
+    open: false,// 是否自动打开浏览器
+    hot: true
   },
   module: {
     rules: [
