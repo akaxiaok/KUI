@@ -17,6 +17,9 @@ class Test extends Component {
       <div >
         <div className="red" >这是一个测试文件</div >
         <div className="red" >this is a test file</div >
+        <label ><input type="checkbox" />check</label >
+        <input type="text" />
+        <span >{this.props.value}</span >
       </div >
     )
   }

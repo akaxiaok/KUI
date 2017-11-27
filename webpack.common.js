@@ -4,11 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   devtool: 'inline-source-map',
-  entry: {
-    //index: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', path.resolve(__dirname, 'src/index.jsx')], // 使用 webpack-hot-middleware 需要添加入口参数
-    index: path.resolve(__dirname, 'src/index.jsx'),
-    // Test: path.resolve(__dirname, 'src/Test.jsx')
-  },//已多次提及的唯一入口文件 __dirname”是node.js中的一个全局变量，它指向当前执行脚本所在的目录
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    path.resolve(__dirname, 'src/index.jsx')
+  ],
+  // entry: {
+  //   //index: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', path.resolve(__dirname, 'src/index.jsx')], // 使用 webpack-hot-middleware 需要添加入口参数
+  //   index: path.resolve(__dirname, 'src/index.jsx'),
+  //   // Test: path.resolve(__dirname, 'src/Test.jsx')
+  // },
+  // __dirname 是node.js中的一个全局变量，它指向当前执行脚本所在的目录
   output: {
     path: path.resolve(__dirname, 'dist'),//打包后的文件存放的地方 // path.resolve 生成绝对路径
     filename: '[name].bundle.js',//打包后输出文件的文件名
@@ -34,9 +41,9 @@ module.exports = {
     rules: [
       {
         test: /(\.jsx|\.js)$/,
-        use: {
-          loader: 'babel-loader'
-        },
+        // use: {
+        loaders: ['babel-loader'],
+        // },
         exclude: /node_modules/
       }, {
         test: /\.css|\.less$/,
