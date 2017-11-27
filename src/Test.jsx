@@ -4,7 +4,8 @@
 import React, { Component } from 'react';
 import beautyGif from './image/beauty.gif';
 import './style/index.less';
-
+import print from './print.js';
+print();
 class Test extends Component {
   componentDidMount() {
     let beauty = new Image();
@@ -15,7 +16,7 @@ class Test extends Component {
   render() {
     return (
       <div >
-        <div className="red" >这是一个测试文件</div >
+        <div className="red" >这是一个</div >
         <div className="red" >this is a test file</div >
         <label ><input type="checkbox" />check</label >
         <input type="text" />
@@ -26,3 +27,4 @@ class Test extends Component {
 }
 
 export default Test;
+
