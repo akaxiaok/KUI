@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
+    // 'webpack-dev-server/client?http://localhost:8080', // if iframe mode(inline:false)
     'webpack/hot/only-dev-server',
     path.resolve(__dirname, 'src/index.jsx')
   ],
@@ -33,7 +33,7 @@ module.exports = {
   devServer: {
     contentBase: './dist', // webpackServer 使用的路径
     historyApiFallback: true, // 不跳转
-    inline: false, // 实时刷新
+    inline: true,
     open: false,// 是否自动打开浏览器
     hot: true
   },
