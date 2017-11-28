@@ -17,7 +17,7 @@ module.exports = merge.strategy({
     path: path.resolve(__dirname, 'dist'),//打包后的文件存放的地方 // path.resolve 生成绝对路径
     filename: '[name].[chunkhash].js',//打包后输出文件的文件名
     publicPath: '/',
-    chunkFilename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js', // 使用 chunkhash 时，不能有 devServer
   },
   plugins: [
     new CleanWebpackPlugin(['dist']), // 清空 dist 目录
