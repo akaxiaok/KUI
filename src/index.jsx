@@ -1,12 +1,9 @@
 import App from './app.jsx';
 import React from 'react';
-import _ from 'lodash';
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader';
-import {cube} from './math';
+import { getLodash } from './math';
 
-
-console.log(_.isArray([]),cube(5));
 
 const render = Component => {
   ReactDOM.render(
@@ -18,14 +15,37 @@ const render = Component => {
 };
 
 
-
-
 const test = document.createElement('div');
 test.id = 'test';
 document.body.appendChild(test);
-const test1 = document.createElement('div');
-test1.textContent = 'test1';
-document.body.appendChild(test1);
+const loadLoadsh = document.createElement('div');
+loadLoadsh.textContent = 'test1';
+loadLoadsh.onclick = e => {
+  const v = import('lodash').then(_ => {
+    debugger
+    console.log(_.isArray([]));
+    return 'lodash ok';
+  }).catch(error => 'An error occurred while loading the lodash');
+  v.then(function (s) {
+    console.log(s);
+  })
+};
+document.body.appendChild(loadLoadsh);
+const loadPrint = document.createElement('div');
+loadPrint.textContent = 'test1';
+loadPrint.onclick = e => {
+  const v = import('./print').then(module => {
+    debugger
+    const printMe = module.default;
+    printMe();
+    return 'printMe ok';
+  }).catch(error => 'An error occurred while loading the print');
+  v.then(function (s) {
+    console.log(s);
+  })
+};
+document.body.appendChild(loadPrint);
+
 render(App);
 if (module.hot) {
   module.hot.accept();

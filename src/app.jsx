@@ -1,10 +1,8 @@
 import React from 'react';
 import Test from './Test.jsx';
 import './style/index.less';
-import printMe from './print.js';
 import { cube } from "./math";
 
-printMe();
 
 function App(props) {
   return (

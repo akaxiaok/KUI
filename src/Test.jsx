@@ -4,8 +4,7 @@
 import React, { Component } from 'react';
 import beautyGif from './image/beauty.gif';
 import './style/index.less';
-import print from './print.js';
-print();
+
 class Test extends Component {
   componentDidMount() {
     let beauty = new Image();
