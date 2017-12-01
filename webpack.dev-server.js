@@ -10,17 +10,20 @@ module.exports = merge.strategy({
   devtool: 'inline-source-map',
   entry: {
     // hot loader entry 文件都要添加 module.hot.accept
-    index: ['babel-polyfill',
+    index: [
       'react-hot-loader/patch',
       // 'webpack-dev-server/client?http://localhost:8080', // if iframe mode(inline:false)
       'webpack/hot/only-dev-server',
-      path.resolve(__dirname, 'src/index.jsx')
+      path.resolve(__dirname, 'src/index.tsx')
     ],
     // hot loader entry 文件都要添加 module.hot.accept
     // math: ['react-hot-loader/patch',
     //   'webpack/hot/only-dev-server',
     //   path.resolve(__dirname, 'src/math.js')
     // ],
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),//打包后的文件存放的地方 // path.resolve 生成绝对路径
