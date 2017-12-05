@@ -1,13 +1,5 @@
 const path = require('path');
 module.exports = {
-  entry: {
-    index: ['babel-polyfill',
-      'react-hot-loader/patch',
-      // 'webpack-dev-server/client?http://localhost:8080', // if iframe mode(inline:false)
-      'webpack/hot/only-dev-server',
-      path.resolve(__dirname, 'src/index.jsx')
-    ],
-  },
   module: {
     rules: [
       {
@@ -20,7 +12,7 @@ module.exports = {
         test: /\.css|\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader']
       }, {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|ico)$/,
         use: [{
           loader: 'file-loader',
           options: {
@@ -38,5 +30,11 @@ module.exports = {
         }],// https://survivejs.com/webpack/loading/fonts/ 处理字体
       }
     ]
+  },
+  resolve: {
+    extensions: [".js", ".json", ".jsx"],
+    alias: {
+      Components: path.resolve(__dirname, 'src/components')
+    }
   }
 };

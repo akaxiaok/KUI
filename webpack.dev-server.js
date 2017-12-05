@@ -6,12 +6,11 @@ const common = require('./webpack.common.js');
 // 改用 express & webpack-dev-middleware
 module.exports = merge.strategy({
   entry: 'replace', // or 'replace', defaults to 'append'
-})(common,{
+})(common, {
   devtool: 'inline-source-map',
   entry: {
     // hot loader entry 文件都要添加 module.hot.accept
-    index: ['babel-polyfill',
-      'react-hot-loader/patch',
+    index: ['react-hot-loader/patch',
       // 'webpack-dev-server/client?http://localhost:8080', // if iframe mode(inline:false)
       'webpack/hot/only-dev-server',
       path.resolve(__dirname, 'src/index.jsx')

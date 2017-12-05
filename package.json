@@ -19,12 +19,15 @@
   },
   "homepage": "https://github.com/akaxiaok/shoot#readme",
   "dependencies": {
+    "classnames": "^2.2.5",
     "element-react": "^1.4.3",
     "element-theme-default": "^1.4.10",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-feather": "^1.0.7",
     "zepto": "^1.2.0"
   },
   "devDependencies": {
@@ -36,6 +39,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
+    "element-react": "^1.4.3",
     "express": "^4.16.2",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
