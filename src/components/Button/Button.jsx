@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Component, PropTypes } from '../../libs/';
+import Icon from '../Icon';
 
 export default class Button extends Component {
   onClick(e) {
@@ -12,18 +13,25 @@ export default class Button extends Component {
   }
 
   getClass() {
-    return this.className('k-button',`${this.props.size}`, this.props.disabled
+    return this.className('k-button', this.props.size, this.props.disabled
     )
   }
 
   render() {
+    const {
+      leftIcon,
+      leftIconClass,
+      rightIcon,
+      rightIconClass,
+      disabled
+    } = this.props;
     return (
       <button style={this.style()}
-              className={this.getClass()} disabled={this.props.disabled} type={this.props.nativeType}
+              className={this.getClass()} disabled={disabled}
               onClick={this.onClick.bind(this)} >
-        {this.props.loading && <i className="el-icon-loading" />}
-        {this.props.icon && !this.props.loading && <i className={`el-icon-${this.props.icon}`} />}
+        {leftIconClass || leftIcon && <Icon name={leftIcon} className="k-bt-left-icon" customIcon={leftIconClass} />}
         <span >{this.props.text}</span >
+        {rightIconClass || rightIcon && <Icon name={rightIcon} className="k-bt-right-icon" customIcon={rightIconClass} />}
       </button >
     )
   }
@@ -32,8 +40,11 @@ export default class Button extends Component {
 Button.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.string,
-  icon: PropTypes.string,
   disabled: PropTypes.bool,
+  leftIcon: PropTypes.string,
+  rightIcon: PropTypes.string,
+  leftIconClass: PropTypes.string,
+  rightIconClass: PropTypes.string,
 };
 
 Button.defaultProps = {
