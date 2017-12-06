@@ -1,6 +1,6 @@
 import React from 'react';
-import './style/index.less';
-import { Button, Icon } from 'Components';
+import './style';
+import { Button, Icon, MenuButton } from 'Components';
 
 function App(props) {
   return (
@@ -17,6 +17,8 @@ function App(props) {
       <Button text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
       <Icon name="CAmera" className="k-test" style={{ color: 'red', backgroundColor: '#09f' }} />
       <Icon customIcon="k-test-icon" className="" />
+      <MenuButton />
+      <MenuButton text="菜单按钮"/>
     </div >
   )
 }

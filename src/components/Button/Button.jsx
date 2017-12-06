@@ -29,9 +29,10 @@ export default class Button extends Component {
       <button style={this.style()}
               className={this.getClass()} disabled={disabled}
               onClick={this.onClick.bind(this)} >
-        {leftIconClass || leftIcon && <Icon name={leftIcon} className="k-bt-left-icon" customIcon={leftIconClass} />}
+        {leftIconClass || leftIcon && <Icon name={leftIcon} className="k-bt-icon-left" customIcon={leftIconClass} />}
         <span >{this.props.text}</span >
-        {rightIconClass || rightIcon && <Icon name={rightIcon} className="k-bt-right-icon" customIcon={rightIconClass} />}
+        {rightIconClass || rightIcon &&
+        <Icon name={rightIcon} className="k-bt-icon-right" customIcon={rightIconClass} />}
       </button >
     )
   }

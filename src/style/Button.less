@@ -1,0 +1,62 @@
+@import "theme";
+
+.k-button {
+  height: 2em;
+  width: auto;
+  background: @back-default-color;
+  color: @font-default-color;
+  padding: 0 1em;
+  line-height: 1;
+  border: 1px solid @back-default-color;
+  box-sizing: content-box;
+  outline: none;
+  &[disabled] {
+    .disabled;
+  }
+  &.small {
+    span {
+      width: 5em;
+    }
+  }
+  &.middle {
+    span {
+      width: 10em;
+    }
+  }
+  &.large {
+    span {
+      width: 15em;
+    }
+  }
+  &:hover, &:focus {
+    color: @font-active-color;
+    border-color: @font-active-color;
+    &[disabled] {
+      .disabled;
+    }
+  }
+  &:active {
+    background: @back-active-color;
+  }
+  span {
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.disabled {
+  background: @back-disabled-color;
+  color: @font-disabled-color;
+  border-color: @back-disabled-color;
+}
+
+.k-bt-icon {
+  &-left {
+    margin-right: 0.5em;
+  }
+  &-right {
+    margin-left: 0.5em;
+  }
+}
