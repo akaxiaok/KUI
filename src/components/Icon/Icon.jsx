@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Component, Icons, PropTypes } from '../../libs/';
+import './Icon.less';
 
 export default class Icon extends Component {
   render() {

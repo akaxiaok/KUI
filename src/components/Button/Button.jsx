@@ -4,6 +4,7 @@
 import React from 'react';
 import { Component, PropTypes } from '../../libs/';
 import Icon from '../Icon';
+import './Button.less';
 
 export default class Button extends Component {
   onClick(e) {

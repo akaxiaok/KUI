@@ -1,4 +1,4 @@
-@import "theme";
+@import "../theme";
 
 .k-button {
   height: 2em;
@@ -11,7 +11,7 @@
   box-sizing: content-box;
   outline: none;
   &[disabled] {
-    .disabled;
+    .disabled();
   }
   &.small {
     span {
@@ -32,7 +32,7 @@
     color: @font-active-color;
     border-color: @font-active-color;
     &[disabled] {
-      .disabled;
+      .disabled();
     }
   }
   &:active {
@@ -46,7 +46,7 @@
   }
 }
 
-.disabled {
+.disabled() {
   background: @back-disabled-color;
   color: @font-disabled-color;
   border-color: @back-disabled-color;
