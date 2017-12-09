@@ -3,8 +3,8 @@ import './style';
 import { Button, Icon, MenuButton } from 'Components';
 
 
-function log(e) {
-  console.log(e.item.text, e.item.value, e.item.index);
+function log(e, item) {
+  console.log(item.text, item.value, item.index);
 }
 
 function App(props) {
@@ -24,8 +24,9 @@ function App(props) {
       <Icon customIcon="k-test-icon" className="" />
       <MenuButton />
       <MenuButton text="菜单按钮" items={[{ text: 'qwr' }, { text: 'rrr' }]} />
+      <MenuButton text="菜单按钮" />
       <MenuButton text="菜单按钮" items={[{ text: 'qwr', value: '01' }, { text: 'rrr', value: '02' }]}
-                  itemClick={log.bind(this)} />
+                  itemClick={log.bind(this)} hideOnItemClick={false} />
     </div >
   )
 }
