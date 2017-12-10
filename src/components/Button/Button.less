@@ -10,6 +10,7 @@
   border: 1px solid @back-default-color;
   box-sizing: content-box;
   outline: none;
+  vertical-align: bottom;
   &[disabled] {
     .disabled();
   }
@@ -43,6 +44,7 @@
     display: inline-block;
     white-space: nowrap;
     text-overflow: ellipsis;
+    vertical-align: bottom;
   }
 }
 
@@ -54,9 +56,11 @@
 
 .k-bt-icon {
   &-left {
+    vertical-align: bottom;
     margin-right: 0.5em;
   }
   &-right {
+    vertical-align: bottom;
     margin-left: 0.5em;
   }
 }

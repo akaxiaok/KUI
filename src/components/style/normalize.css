@@ -246,7 +246,7 @@ textarea {
   margin: 0; /* 1 */
   font-size: 100%; /* 1 */
   font-family: sans-serif; /* 1 */
-  line-height: 1.15; /* 2 */
+  line-height: 1; /* 2 */
 }
 
 /**
@@ -445,4 +445,20 @@ template {
 
 [hidden] {
   display: none;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: #999;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #999;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #999;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #999;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './style';
-import { Button, Icon, MenuButton } from 'Components';
+import { Button, Icon, Input, MenuButton } from 'Components';
 
 
 function log(e, item) {
@@ -9,24 +9,37 @@ function log(e, item) {
 
 function App(props) {
   return (
-    <div style={{ fontSize: '14px' }} >
-      <Button onClick={() => {
-        alert(1)
-      }} text="test button" />
-      <Button className="" disabled={true} size="large" text="test button" />
-      <Button size="middle" text="test button" />
-      <Button size="small" className="k-test red" text="test button" />
-      <Button />
-      <Button text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
-      <Button leftIcon="Camera" text="icons" rightIcon="Arrow-right" />
-      <Button text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
-      <Icon name="CAmera" className="k-test" style={{ color: 'red', backgroundColor: '#09f' }} />
-      <Icon customIcon="k-test-icon" className="" />
-      <MenuButton />
-      <MenuButton text="菜单按钮" items={[{ text: 'qwr' }, { text: 'rrr' }]} />
-      <MenuButton text="菜单按钮" />
-      <MenuButton text="菜单按钮" items={[{ text: 'qwr', value: '01' }, { text: 'rrr', value: '02' }]}
-                  itemClick={log.bind(this)} hideOnItemClick={false} />
+    <div style={{ fontSize: '14px', margin: '10px' }} >
+      <div >
+        <h3 >Button</h3 >
+        <Button onClick={() => {
+          alert(1)
+        }} text="test button" />
+        <Button className="" disabled={true} size="large" text="test button" />
+        <Button size="middle" text="test button" />
+        <Button size="small" className="k-test red" text="test button" />
+        <Button />
+        <Button text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
+        <Button leftIcon="Camera" text="icons" rightIcon="Arrow-right" />
+        <Button text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
+      </div >
+      <div >
+        <h3 >Icon</h3 >
+        <Icon name="CAmera" className="k-test" style={{ color: 'red', backgroundColor: '#09f' }} />
+        <Icon customIcon="k-test-icon" className="" />
+      </div >
+      <div >
+        <h3 >MenuButton</h3 >
+        <MenuButton />
+        <MenuButton text="菜单按钮" items={[{ text: 'qwr' }, { text: 'rrr' }]} />
+        <MenuButton text="菜单按钮" />
+        <MenuButton text="菜单按钮" items={[{ text: 'qwr', value: '01' }, { text: 'rrr', value: '02' }]}
+                    itemClick={log.bind(this)} hideOnItemClick={false} />
+      </div >
+      <div >
+        <h3 >Input</h3 >
+        <Input type={'password'} /> <Input placeholder="placeholder" /> <Input placeholder="placeholder" disabled={true} /> <Button text="ww" />
+      </div >
     </div >
   )
 }

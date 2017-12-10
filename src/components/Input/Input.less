@@ -1,0 +1,19 @@
+@import "../style/theme";
+
+.k-input {
+  border: 1px solid @font-default-color;
+  padding: 0.5em 5px;
+  height: 1em;
+  line-height: 1;
+  box-sizing: content-box;
+  outline: 0;
+  &:focus {
+    border: 1px solid @font-active-color;
+    outline: 0;
+  }
+  &[disabled] {
+    background: @back-disabled-color;
+    color: @font-disabled-color;
+    border-color: @font-disabled-color;
+  }
+}
