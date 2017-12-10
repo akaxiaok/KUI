@@ -4,6 +4,7 @@
 import React from 'react';
 import { Component } from '../../libs/index';
 import './MenuItem.less';
+import Icon from '../Icon';
 
 export default class MenuItem extends Component {
   handleClick = (event) => {
@@ -20,7 +21,7 @@ export default class MenuItem extends Component {
   render() {
     const { text } = this.props;
     return (
-      <li onClick={this.handleClick} className={this.getClass()} >{text}</li >
+      <li onClick={this.handleClick} className={this.getClass()} >{text} <Icon name='chevron-left' /></li >
     )
   }
 }

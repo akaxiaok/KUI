@@ -7,14 +7,11 @@ import './Icon.less';
 
 export default class Icon extends Component {
   render() {
-    let I;
     if (this.props.customIcon) {
       return <i style={this.style()} className={this.className(`k-icon ${this.props.customIcon}`)} />
     }
     if (this.props.name) {
-      I = Icons[this.props.name.toLowerCase()];
-    }
-    if (I) {
+      let I = Icons[this.props.name.toLowerCase()];
       return <I style={this.style()} className={this.className(`k-icon`)} />
     }
     return '';
