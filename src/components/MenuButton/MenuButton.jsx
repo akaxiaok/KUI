@@ -28,13 +28,10 @@ export default class MenuButton extends Component {
   };
 
   handleMouseLeave(event) {
-    this.hideTimeout = setTimeout(() => {
       this.setState({ showItems: false });
-    }, 500);
   }
 
   handleMouseEnter(event) {
-    clearTimeout(this.hideTimeout);
   }
 
   handleItemClick(event, item) {
