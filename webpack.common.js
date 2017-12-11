@@ -3,10 +3,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /(\.jsx|\.js|\.ts|\.tsx)$/,
+        test: /(\.jsx|\.js)$/,
         // use: {
-        // loaders: ['babel-loader'],
-        loaders: ['react-hot-loader/webpack','ts-loader'], // ts, babel 无效，此处添加 'react-hot-loader/webpack' 以支持热部署
+        loaders: ['babel-loader'],
         // },
         exclude: /node_modules/
       }, {
