@@ -3,8 +3,12 @@ import './style';
 import { Button, Icon, Input, MenuButton } from 'Components';
 
 
-function log(e, item) {
+function logItem(e, item) {
   console.log(item.text, item.value, item.index);
+}
+
+function log(e) {
+  console.log(e);
 }
 
 function App(props) {
@@ -18,10 +22,8 @@ function App(props) {
         <Button className="" disabled={true} size="large" text="test button" />
         <Button size="middle" text="test button" />
         <Button size="small" className="k-test red" text="test button" />
-        <Button />
-        <Button text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
+        <Button onMouseEnter={log.bind(this)} onFocus={log.bind(this)} />
         <Button leftIcon="Camera" text="icons" rightIcon="Arrow-right" />
-        <Button text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
       </div >
       <div >
         <h3 >Icon</h3 >
@@ -38,7 +40,12 @@ function App(props) {
       </div >
       <div >
         <h3 >Input</h3 >
-        <Input type={'password'} /> <Input placeholder="placeholder" /> <Input placeholder="placeholder" disabled={true} /> <Button text="ww" />
+        <Input type={'password'} />
+        <Input placeholder="placeholder"
+               required={true} validateOn={{ focus: false }} />
+        <Input placeholder="placeholder"
+               disabled={true} />
+        <Button text="ww" />
       </div >
     </div >
   )
