@@ -24,14 +24,18 @@ export default class Button extends Component {
       leftIconClass,
       rightIcon,
       rightIconClass,
-      disabled
+      disabled,
+      style,
+      className,
+      text,
+      ...otherProps
     } = this.props;
     return (
       <button style={this.style()}
               className={this.getClass()} disabled={disabled}
-              onClick={this.onClick.bind(this)} >
+              onClick={this.onClick.bind(this)} {...otherProps}>
         {leftIconClass || leftIcon && <Icon name={leftIcon} className="k-bt-icon-left" customIcon={leftIconClass} />}
-        <span >{this.props.text}</span >
+        <span >{text}</span >
         {rightIconClass || rightIcon &&
         <Icon name={rightIcon} className="k-bt-icon-right" customIcon={rightIconClass} />}
       </button >
@@ -53,5 +57,4 @@ Button.defaultProps = {
   type: 'default',
   size: '',
   disabled: false,
-  plain: false,
 };
