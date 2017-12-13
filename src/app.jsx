@@ -7,8 +7,8 @@ function logItem(e, item) {
   console.log(item.text, item.value, item.index);
 }
 
-function log(e) {
-  console.log(e);
+function log(e, v) {
+  console.log(e, v);
 }
 
 function App(props) {
@@ -42,7 +42,14 @@ function App(props) {
         <h3 >Input</h3 >
         <Input type={'password'} />
         <Input placeholder="placeholder"
-               required={true} validateOn={{ focus: false }} />
+               required={true}
+               validateOn={{ focus: false }}
+               onChange={log.bind(this)}
+               validator={(value, type) => {
+                 const valid = !!value.match(/^[0-9]+$/g);
+                 return { valid, errMsg: 'This should be numbers' }
+               }}
+        />
         <Input placeholder="placeholder"
                disabled={true} />
         <Button text="ww" />

@@ -25,15 +25,23 @@ export default class Input extends Component {
   validate(type) {
     const value = this.getValue();
     const validateOn = Object.assign({}, Input.defaultProps.validateOn, this.props.validateOn);
-    let validated = true;
+    let validated = { valid: true };
     if (!validateOn[type]) {
-      return this.state.valid;
+      validated = { valid: this.state.valid };
+      return validated;
     }
     if (this.props.required && !value.length) {
-      validated = false;
+      validated = {
+        valid: false,
+        errType: 'required',
+        errMsg: 'This is required'
+      }
     }
     else if (this.props.validator) {
-      validated = this.props.validator(value, 'change');
+      let result = this.props.validator(value, type);
+      validated.errType = result.valid ? '' : 'custom';
+      validated.errMsg = result.valid ? '' : result.errMsg;
+      validated.valid = result.valid;
     }
     return validated;
   }
@@ -41,33 +49,43 @@ export default class Input extends Component {
   handleChange(event) {
     const value = this.getValue();
     let validated = this.validate('change');
-    this.setState({ valid: validated })
+    this.props.onChange && this.props.onChange(event, value);
+    this.setState(validated);
   }
 
   handleBlur(event) {
     let validated = this.validate('blur');
-    this.setState({ valid: validated })
+    this.setState(validated);
   }
 
   handleFocus(event) {
     let validated = this.validate('focus');
-    this.setState({ valid: validated })
+    this.setState(validated);
   }
 
   render() {
-    const { disabled, type, text, placeholder, required } = this.props;
-    return <input
-      ref={input => {
-        this.input = input
-      }}
-      type={type}
-      className={this.getClass()}
-      value={text}
-      disabled={disabled}
-      placeholder={placeholder}
-      onChange={this.handleChange.bind(this)}
-      onBlur={this.handleBlur.bind(this)}
-      onFocus={this.handleFocus.bind(this)} />
+    const { disabled, type, text } = this.props;
+    let { errMsg, errType } = this.state;
+    const placeholder = this.state.valid ? this.props.placeholder : '';
+    let msgType = errType ? `${errType}-msg` : '';
+    return <div className="k-input-container" >
+
+      <span className={`k-input-msg ${msgType}`} >
+         <span className="k-input-msg-content" title={errMsg} >{errMsg}</span >
+        </span >
+      <input
+        ref={input => {
+          this.input = input
+        }}
+        type={type}
+        className={this.getClass()}
+        value={text}
+        disabled={disabled}
+        placeholder={placeholder}
+        onChange={this.handleChange.bind(this)}
+        onBlur={this.handleBlur.bind(this)}
+        onFocus={this.handleFocus.bind(this)} />
+    </div >
   }
 }
 Input.defaultProps = {

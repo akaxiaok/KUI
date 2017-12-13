@@ -1,5 +1,42 @@
 @import "../style/theme";
 
+.k-input-container {
+  display: inline-block;
+  position: relative;
+  &.k-input-container {
+    margin-right: 0.5em;
+  }
+}
+
+.k-input-msg {
+  position: absolute;
+  color: @font-disabled-color;
+  top: -1em;
+  white-space: nowrap;
+  font-size: 1em;
+  transition: all 0.2s ease;
+  visibility: hidden;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  & .k-input-msg-content {
+    padding-left: 0.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &.required-msg {
+    color: @invalid-color;
+    top: 0.5em;
+    visibility: visible;
+    border-top: 2px solid transparent;
+  }
+  &.custom-msg {
+    border-bottom: 2px solid transparent;
+    color: @invalid-color;
+    visibility: visible;
+  }
+}
+
 .k-input {
   border: 1px solid @font-default-color;
   padding: 0.5em 5px;
@@ -7,6 +44,7 @@
   line-height: 1;
   box-sizing: content-box;
   outline: 0;
+
   &:focus {
     border: 1px solid @font-active-color;
     outline: 0;
