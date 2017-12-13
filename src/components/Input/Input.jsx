@@ -6,6 +6,9 @@ import { Component } from '../../libs/';
 import './Input.less';
 
 export default class Input extends Component {
+
+  static ERR_TYPE = { CUSTOM: 'custom', REQUIRED: 'required' };
+
   constructor(props) {
     super();
     this.state = {
@@ -33,13 +36,13 @@ export default class Input extends Component {
     if (this.props.required && !value.length) {
       validated = {
         valid: false,
-        errType: 'required',
+        errType: Input.ERR_TYPE.REQUIRED,
         errMsg: 'This is required'
       }
     }
     else if (this.props.validator) {
       let result = this.props.validator(value, type);
-      validated.errType = result.valid ? '' : 'custom';
+      validated.errType = result.valid ? '' : Input.ERR_TYPE.CUSTOM;
       validated.errMsg = result.valid ? '' : result.errMsg;
       validated.valid = result.valid;
     }
@@ -63,6 +66,10 @@ export default class Input extends Component {
     this.setState(validated);
   }
 
+  focus() {
+    this.input.focus();
+  }
+
   render() {
     const { disabled, type, text } = this.props;
     let { errMsg, errType } = this.state;
@@ -70,7 +77,7 @@ export default class Input extends Component {
     let msgType = errType ? `${errType}-msg` : '';
     return <div className="k-input-container" >
 
-      <span className={`k-input-msg ${msgType}`} >
+      <span onClick={this.focus.bind(this)} className={`k-input-msg ${msgType}`} >
          {errMsg}
         </span >
       <input

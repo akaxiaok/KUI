@@ -50,6 +50,7 @@ function App(props) {
                  return { valid, errMsg: 'This should be numbers' }
                }}
         />
+        <br />
         <Input placeholder="placeholder"
                disabled={true} />
         <Button text="ww" />
