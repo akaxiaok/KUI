@@ -71,7 +71,7 @@ export default class Input extends Component {
     return <div className="k-input-container" >
 
       <span className={`k-input-msg ${msgType}`} >
-         <span className="k-input-msg-content" title={errMsg} >{errMsg}</span >
+         {errMsg}
         </span >
       <input
         ref={input => {
