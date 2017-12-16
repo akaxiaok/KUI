@@ -462,3 +462,8 @@ template {
 :-ms-input-placeholder { /* Internet Explorer 10+ */
   color: #999;
 }
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}

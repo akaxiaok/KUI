@@ -17,32 +17,35 @@
   visibility: hidden;
   width: 100%;
   border: 1px solid transparent;
-  padding: 0 0.5em;
+  padding: 0 1em;
   box-sizing: border-box;
   &.required-msg {
     color: @invalid-color;
+    background: @back-default-color;
     top: 0.5em;
     visibility: visible;
     border-top: 2px solid transparent;
+    z-index: -1;
   }
   &.custom-msg {
     top: 2em;
     margin-top: 2px;
-    padding: 0.5em;
+    padding: 0.5em 1em;
     color: @back-default-color;
     background: @invalid-color;
     visibility: visible;
+    z-index: 1;
   }
 }
 
 .k-input {
   border: 1px solid @font-default-color;
-  padding: 0.5em 5px;
+  padding: 0.5em 1em;
   height: 1em;
   line-height: 1;
   box-sizing: content-box;
   outline: 0;
-
+  background: transparent;
   &:focus {
     border: 1px solid @font-active-color;
     outline: 0;
@@ -54,5 +57,19 @@
   }
   &.k-input-invalid {
     border-color: @invalid-color;
+  }
+}
+
+.k-input-items {
+  width: 100%;
+  list-style: none;
+  position: absolute;
+  top: 2em;
+  margin-top: 2px;
+  display: none;
+  background: @back-default-color;
+  z-index: 1;
+  &.display {
+    display: block;
   }
 }

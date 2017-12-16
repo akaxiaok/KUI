@@ -49,8 +49,15 @@ function App(props) {
                  const valid = !!value.match(/^[0-9]+$/g);
                  return { valid, errMsg: 'This should be numbers' }
                }}
+               items={['Jan', 'Feb', 'Mar', 'Apr']}
         />
         <br />
+        <Input placeholder="placeholder"
+               required={true}
+               validateOn={{ focus: false }}
+               onChange={log.bind(this)}
+               items={['Jan', 'Feb', 'Mar', 'Apr']}
+        />
         <Input placeholder="placeholder"
                disabled={true} />
         <Button text="ww" />
