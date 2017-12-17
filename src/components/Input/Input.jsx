@@ -2,11 +2,12 @@
  * Created by Kimi on 2017/12/10.
  */
 import React from 'react';
+import ClickOutside from 'react-click-outside';
 import { Component } from '../../libs/';
 import './Input.less';
-import MenuItem from '../MenuItem';
+import ItemList from './ItemList';
 
-export default class Input extends Component {
+class Input extends Component {
 
   static ERR_TYPE = { CUSTOM: 'custom', REQUIRED: 'required' };
 
@@ -19,9 +20,9 @@ export default class Input extends Component {
 
   componentDidUpdate() {
     const { required, focus, valid } = this.state;
-    // this.timout = setTimeout(() => {
-    //   this.setState({ showItems: focus && (required || valid) });
-    // },0);
+    setTimeout(() => {
+      this.list.toggleList(focus && (required || valid));
+    }, 0)
   }
 
   getClass() {
@@ -38,7 +39,7 @@ export default class Input extends Component {
     const validateOn = Object.assign({}, Input.defaultProps.validateOn, this.props.validateOn);
     let validated = { valid: true, required: false };
     if (!validateOn[type]) {
-      validated = { valid: this.state.valid };
+      validated = this.state;
       return validated;
     }
     if (this.props.required && !value.length) {
@@ -65,9 +66,14 @@ export default class Input extends Component {
     this.setState(validated);
   }
 
+  handleClickOutside() {
+    if (this.state.focus) {
+      this.setState({ focus: false });
+    }
+  }
+
   handleBlur(event) {
     let newState = this.validate('blur');
-    newState.focus = false;
     this.setState(newState);
   }
 
@@ -75,10 +81,6 @@ export default class Input extends Component {
     let newState = this.validate('focus');
     newState.focus = true;
     this.setState(newState);
-    this.timout = setTimeout(() => {
-      const { required, focus, valid } = this.state;
-      this.setState({ showItems: focus && (required || valid) });
-    }, 0);
   }
 
   focus() {
@@ -93,25 +95,9 @@ export default class Input extends Component {
 
   render() {
     const { disabled, type, text, items } = this.props;
-    let { errMsg, errType, valid, focus, required, showItems } = this.state;
+    let { errMsg, errType, valid } = this.state;
     const placeholder = valid ? this.props.placeholder : '';
     let msgType = errType ? `${errType}-msg` : '';
-    let selectItems = [];
-    if (items) {
-      const reg = new RegExp(this.getValue(), 'i');
-      const equalReg = new RegExp('^' + this.getValue() + '$', 'i');
-      items.forEach((v, i) => {
-        if (reg.test(v) && !equalReg.test(v)) {
-          const item = <MenuItem key={i}
-                                 onClick={e => {
-                                   this.handleItemClick(e, v);
-                                 }}
-                                 text={v} />;
-          selectItems.push(item);
-        }
-      })
-    }
-    const itemsDisplay = selectItems.length ? 'display' : '';
     return <div className="k-input-container" >
       <span className={`k-input-msg ${!valid && msgType}`} >
          {errMsg}
@@ -128,12 +114,18 @@ export default class Input extends Component {
         onChange={this.handleChange.bind(this)}
         onBlur={this.handleBlur.bind(this)}
         onFocus={this.handleFocus.bind(this)} />
-      <ul className={`k-input-items ${showItems && itemsDisplay}`} >
-        {selectItems}
-      </ul >
+      <ItemList
+        ref={list => {
+          this.list = list;
+        }}
+        items={items}
+        value={this.getValue()}
+        onClick={this.handleItemClick.bind(this)} />
     </div >
   }
 }
+
 Input.defaultProps = {
   validateOn: { blur: true, focus: true, change: true },
-}
+};
+export default ClickOutside(Input);

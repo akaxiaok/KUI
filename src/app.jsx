@@ -33,7 +33,7 @@ function App(props) {
       <div >
         <h3 >MenuButton</h3 >
         <MenuButton />
-        <MenuButton text="菜单按钮" items={[{ text: 'qwr' }, { text: 'rrr' }]} />
+        <MenuButton text="菜单按钮" itemClick={log.bind(this)} items={[{ text: 'qwr' }, { text: 'rrr' }]} />
         <MenuButton text="菜单按钮" />
         <MenuButton text="菜单按钮" items={[{ text: 'qwr', value: '01' }, { text: 'rrr', value: '02' }]}
                     itemClick={log.bind(this)} hideOnItemClick={false} />
@@ -57,9 +57,19 @@ function App(props) {
                validateOn={{ focus: false }}
                onChange={log.bind(this)}
                items={['Jan', 'Feb', 'Mar', 'Apr']}
+               ref={input => {
+                 this.input = input
+               }}
+               wrappedRef={wrapped => {
+                 this.wrapped = wrapped
+               }}
         />
         <Input placeholder="placeholder"
                disabled={true} />
+        <Input placeholder="placeholder"
+               type="password" />
+        <Input placeholder="placeholder"
+               type="password" />
         <Button text="ww" />
       </div >
     </div >
