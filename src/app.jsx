@@ -1,6 +1,6 @@
 import React from 'react';
 import './style';
-import { Button, Icon, Input, MenuButton } from 'Components';
+import { Button, Icon, Input, MenuButton, TextArea } from 'Components';
 
 
 function logItem(e, item) {
@@ -68,10 +68,13 @@ function App(props) {
                disabled={true} />
         <Input placeholder="placeholder"
                type="password" />
-        <Input placeholder="placeholder"
-               type="password" />
+        <Input
+        />
         <Button text="ww" />
       </div >
+      <Input type={'textarea'} disabled={true} />
+      <Input type={'textarea'} placeholder="place" />
+      <Input type={'textarea'} required />
     </div >
   )
 }

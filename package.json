@@ -1,7 +1,7 @@
 {
-  "name": "shoot",
-  "version": "1.0.0",
-  "description": "build a website rapidly",
+  "name": "KUI",
+  "version": "0.0.1",
+  "description": "UI components",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev-server.js",
@@ -10,27 +10,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akaxiaok/shoot.git"
+    "url": "git+https://github.com/akaxiaok/KUI.git"
   },
   "author": "paradox",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/akaxiaok/shoot/issues"
+    "url": "https://github.com/akaxiaok/KUI/issues"
   },
-  "homepage": "https://github.com/akaxiaok/shoot#readme",
+  "homepage": "https://github.com/akaxiaok/KUI#readme",
   "dependencies": {
     "classnames": "^2.2.5",
-    "element-react": "^1.4.3",
-    "element-theme-default": "^1.4.10",
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
-    "normalize.css": "^7.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-click-outside": "^3.0.0",
     "react-dom": "^16.1.1",
-    "react-feather": "^1.0.7",
-    "zepto": "^1.2.0"
+    "react-feather": "^1.0.7"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

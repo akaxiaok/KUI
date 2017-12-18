@@ -2,10 +2,11 @@
  * Created by Kimi on 2017/12/10.
  */
 import React from 'react';
+import { Component, PropTypes } from '../../libs/';
 import ClickOutside from 'react-click-outside';
-import { Component } from '../../libs/';
 import './Input.less';
 import ItemList from './ItemList';
+
 
 class Input extends Component {
 
@@ -21,13 +22,14 @@ class Input extends Component {
   componentDidUpdate() {
     const { required, focus, valid } = this.state;
     setTimeout(() => {
-      this.list.toggleList(focus && (required || valid));
+      this.list && this.list.toggleList(focus && (required || valid));
     }, 0)
   }
 
   getClass() {
     const valid = this.state.valid ? '' : 'k-input-invalid';
-    return this.className('k-input', valid);
+    const textarea = 'textarea' === this.props.type ? 'k-textarea' : '';
+    return this.className('k-input', textarea, valid);
   }
 
   getValue() {
@@ -94,10 +96,27 @@ class Input extends Component {
   }
 
   render() {
-    const { disabled, type, text, items } = this.props;
+    const { disabled, type, value, items } = this.props;
     let { errMsg, errType, valid } = this.state;
     const placeholder = valid ? this.props.placeholder : '';
     let msgType = errType ? `${errType}-msg` : '';
+    if ('textarea' === type) {
+      return <div className="k-input-container" >
+      <span className={`k-input-msg ${!valid && msgType}`} >
+         {errMsg}
+        </span >
+        <textarea
+          ref={input => {
+            this.input = input
+          }}
+          className={this.getClass()}
+          value={value}
+          disabled={disabled}
+          placeholder={placeholder}
+          onChange={this.handleChange.bind(this)}
+          onBlur={this.handleBlur.bind(this)}
+          onFocus={this.handleFocus.bind(this)} /></div >
+    }
     return <div className="k-input-container" >
       <span className={`k-input-msg ${!valid && msgType}`} >
          {errMsg}
@@ -106,9 +125,9 @@ class Input extends Component {
         ref={input => {
           this.input = input
         }}
-        type={type === "password" ? "password" : 'text'}
+        type={"password" === type ? "password" : ''}
         className={this.getClass()}
-        value={text}
+        value={value}
         disabled={disabled}
         placeholder={placeholder}
         onChange={this.handleChange.bind(this)}
@@ -125,7 +144,16 @@ class Input extends Component {
   }
 }
 
+Input.propTypes = {
+  type: PropTypes.oneOf(['text', 'password', 'textarea']),
+  value: PropTypes.string,
+  items: PropTypes.array,
+  placeholder: PropTypes.string,
+  validateOn: PropTypes.object,
+}
+
 Input.defaultProps = {
   validateOn: { blur: true, focus: true, change: true },
+  type: 'text',
 };
 export default ClickOutside(Input);
