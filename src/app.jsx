@@ -12,6 +12,7 @@ function log(e, v) {
 }
 
 function App(props) {
+  let input;
   return (
     <div style={{ fontSize: '14px', margin: '10px' }} >
       <div >
@@ -58,10 +59,9 @@ function App(props) {
                onChange={log.bind(this)}
                items={['Jan', 'Feb', 'Mar', 'Apr']}
                ref={input => {
-                 this.input = input
                }}
                wrappedRef={wrapped => {
-                 this.wrapped = wrapped
+                 input = wrapped;
                }}
         />
         <Input placeholder="placeholder"
@@ -70,7 +70,9 @@ function App(props) {
                type="password" />
         <Input
         />
-        <Button text="ww" />
+        <Button text="focus" onClick={() => {
+          input.focus()
+        }} />
       </div >
       <Input type={'textarea'} disabled={true} />
       <Input type={'textarea'} placeholder="place" />

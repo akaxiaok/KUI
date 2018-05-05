@@ -12,6 +12,40 @@ class Input extends Component {
 
   static ERR_TYPE = { CUSTOM: 'custom', REQUIRED: 'required' };
 
+  handleChange = (event) => {
+    const value = this.getValue();
+    let validated = this.validate('change');
+    this.props.onChange && this.props.onChange(event, value);
+    this.setState(validated);
+  };
+
+  handleClickOutside = () => {
+    if (this.state.focus) {
+      this.setState({ focus: false });
+    }
+  };
+
+  handleBlur = (event) => {
+    let newState = this.validate('blur');
+    this.setState(newState);
+  };
+
+  handleFocus = (event) => {
+    let newState = this.validate('focus');
+    newState.focus = true;
+    this.setState(newState);
+  };
+
+  focus = () => {
+    this.input.focus();
+  };
+
+  handleItemClick = (e, v) => {
+    this.input.value = v;
+    const newState = this.validate('change');
+    this.setState(newState);
+  };
+
   constructor(props) {
     super();
     this.state = {
@@ -61,40 +95,6 @@ class Input extends Component {
     return validated;
   }
 
-  handleChange(event) {
-    const value = this.getValue();
-    let validated = this.validate('change');
-    this.props.onChange && this.props.onChange(event, value);
-    this.setState(validated);
-  }
-
-  handleClickOutside() {
-    if (this.state.focus) {
-      this.setState({ focus: false });
-    }
-  }
-
-  handleBlur(event) {
-    let newState = this.validate('blur');
-    this.setState(newState);
-  }
-
-  handleFocus(event) {
-    let newState = this.validate('focus');
-    newState.focus = true;
-    this.setState(newState);
-  }
-
-  focus() {
-    this.input.focus();
-  }
-
-  handleItemClick(e, v) {
-    this.input.value = v;
-    const newState = this.validate('change');
-    this.setState(newState);
-  }
-
   render() {
     const { disabled, type, value, items } = this.props;
     let { errMsg, errType, valid } = this.state;
@@ -130,16 +130,16 @@ class Input extends Component {
         value={value}
         disabled={disabled}
         placeholder={placeholder}
-        onChange={this.handleChange.bind(this)}
-        onBlur={this.handleBlur.bind(this)}
-        onFocus={this.handleFocus.bind(this)} />
+        onChange={this.handleChange}
+        onBlur={this.handleBlur}
+        onFocus={this.handleFocus} />
       <ItemList
         ref={list => {
           this.list = list;
         }}
         items={items}
         value={this.getValue()}
-        onClick={this.handleItemClick.bind(this)} />
+        onClick={this.handleItemClick} />
     </div >
   }
 }

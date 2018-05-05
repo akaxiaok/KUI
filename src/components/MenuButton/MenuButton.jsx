@@ -9,36 +9,28 @@ import './MenuButton.less';
 import { PropTypes } from "../../libs/index";
 
 export default class MenuButton extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showItems: false,
-    };
-  }
-
-
-  // see https://github.com/gaearon/react-hot-loader/issues/698
-  // can not use "real arrow function"
-  // like
-  // handleClick = (e)=>{};
-  handleClick(event) {
+  handleClick = (event) => {
     this.setState(preve => {
       return { showItems: !preve.showItems }
     });
   };
 
-  handleMouseLeave(event) {
-      this.setState({ showItems: false });
-  }
+  handleMouseLeave = (event) => {
+    this.setState({ showItems: false });
+  };
 
-  handleMouseEnter(event) {
-  }
-
-  handleItemClick(event, item) {
+  handleItemClick = (event, item) => {
     if (this.props.hideOnItemClick) {
       this.setState({ showItems: false });
     }
     this.props.itemClick && this.props.itemClick(event, item);
+  };
+
+  constructor() {
+    super();
+    this.state = {
+      showItems: false,
+    };
   }
 
   getClass() {
@@ -52,20 +44,18 @@ export default class MenuButton extends Component {
     if (items) {
       items.forEach((v, i) => {
         menuItems.push(
-          <MenuItem index={i} key={i} {...v} onClick={this.handleItemClick.bind(this)} />
+          <MenuItem index={i} key={i} {...v} onClick={this.handleItemClick} />
         )
       });
     }
 
     return (
-      <div onClick={this.handleClick.bind(this)}
+      <div onClick={this.handleClick}
            className={this.getClass()}
            ref={dom => {
              this.dom = dom
            }}
-           onMouseLeave={this.handleMouseLeave.bind(this)}
-           onMouseEnter={this.handleMouseEnter.bind(this)}
-
+           onMouseLeave={this.handleMouseLeave}
       >
         <Button
           text={text}

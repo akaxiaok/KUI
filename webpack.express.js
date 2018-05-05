@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common.js');
 // 改用 express & webpack-dev-middleware
 module.exports = merge.strategy({
@@ -18,9 +17,6 @@ module.exports = merge.strategy({
     chunkFilename: '[name].bundle.js',
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Output'
-    }), // 生成 html 文件
     // new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(), // 热替换 用于自定义的 server
   ],
