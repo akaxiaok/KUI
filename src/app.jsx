@@ -1,6 +1,17 @@
 import React from 'react';
 import './style';
-import { Button, Icon, Input, MenuButton, TextArea } from 'Components';
+import {
+  Button,
+  Icon,
+  Input,
+  MenuButton,
+  Table,
+  TableBody,
+  TableColumn,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow
+} from 'Components';
 
 
 function logItem(e, item) {
@@ -15,6 +26,34 @@ function App(props) {
   let input;
   return (
     <div style={{ fontSize: '14px', margin: '10px' }} >
+      <Table style={{ width: '500px', margin: '0 auto' }} height='300px' >
+        <TableHeader >
+          <TableHeaderColumn >
+            Header
+          </TableHeaderColumn >
+          <TableHeaderColumn >
+            Header
+          </TableHeaderColumn >
+        </TableHeader >
+        <TableBody stripedRows={true} >
+          <TableRow >
+            <TableColumn >
+              Column
+            </TableColumn >
+            <TableColumn >
+              Column
+            </TableColumn >
+          </TableRow >
+          <TableRow >
+            <TableColumn >
+              Column
+            </TableColumn >
+            <TableColumn >
+              Column
+            </TableColumn >
+          </TableRow >
+        </TableBody >
+      </Table >
       <div >
         <h3 >Button</h3 >
         <Button onClick={() => {
@@ -77,6 +116,7 @@ function App(props) {
       <Input type={'textarea'} disabled={true} />
       <Input type={'textarea'} placeholder="place" />
       <Input type={'textarea'} required />
+
     </div >
   )
 }

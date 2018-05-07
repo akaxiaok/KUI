@@ -17,6 +17,7 @@ export default class Component extends React.Component {
 }
 
 Component.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.object
 };
