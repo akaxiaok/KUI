@@ -7,7 +7,7 @@ import { Component, PropTypes } from '../../libs/';
 class TableColumn extends Component {
   render() {
     return (
-      <td >
+      <td style={this.style()} className={this.className()} title={this.props.tooltip} >
         <div className="k-table-td-inner" >{this.props.children}</div >
       </td >
     )
@@ -15,7 +15,7 @@ class TableColumn extends Component {
 }
 
 TableColumn.propTypes = {
-  children: PropTypes.node
+  tooltip: PropTypes.string
 };
 
 export default TableColumn;
